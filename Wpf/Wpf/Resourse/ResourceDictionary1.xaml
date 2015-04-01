@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-	<Color x:Key="MyBlue">#FF3D50A6</Color>
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:validations="clr-namespace:Wpf.Utility.MyValidationRule">
+    <Color x:Key="MyBlue">#FF3D50A6</Color>
 	<!-- 应该在此定义资源字典条目。-->
 
     <ControlTemplate  x:Key="MyButton" TargetType="{x:Type Button}">
@@ -29,4 +30,35 @@
             <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
         </Border>
     </ControlTemplate>
+    
+    <XmlDataProvider x:Key="xmlUser" Source="D:/user.xml" XPath="user/userinfo"></XmlDataProvider>
+
+    <Style x:Key="ValidationTextBoxStyle" TargetType="{x:Type TextBox}">
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <DockPanel LastChildFill="True">
+                        <TextBlock DockPanel.Dock="Right"
+                                           Foreground="Red" FontSize="14" FontWeight="Bold"
+                                           ToolTip="{Binding ElementName=adornerPlaceholder,
+                                           Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                                    X
+                        </TextBlock>
+                        <Border BorderBrush="Red" BorderThickness="1" CornerRadius="3">
+                            <AdornedElementPlaceholder Name="adornerPlaceholder"></AdornedElementPlaceholder>
+                        </Border>
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="true">
+                <Setter Property="ToolTip"
+                                Value="{Binding RelativeSource={RelativeSource Self},
+                                Path=(Validation.Errors)[0].ErrorContent}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <validations:NotNullValidationRule x:Key="NotNullValidationRule" />
 </ResourceDictionary>

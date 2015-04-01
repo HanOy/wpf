@@ -30,5 +30,32 @@ namespace Wpf
         	Application.Current.Shutdown();
             base.OnClosed(e);
         }
+
+        private void BackGround_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void BackGround_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                this.WindowState = WindowState.Normal;
+                return;
+            }
+            if(this.WindowState == WindowState.Normal)
+            {
+                this.WindowState = WindowState.Maximized;
+            }
+            
+        }
+
+        private void Min_click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
     }
 }

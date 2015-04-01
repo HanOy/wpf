@@ -1,0 +1,87 @@
+﻿<Window x:Class="Wpf.View.Register"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:validations="clr-namespace:Wpf.Utility.MyValidationRule"
+        Title="注册" Height="300" Width="300" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" BorderThickness="2" Background="{x:Null}" AllowsTransparency="True">
+    <Window.Resources>
+        <Storyboard x:Key="ClosedStoryboard" Storyboard.TargetName="RegisterGrid">
+            <DoubleAnimation From="1" To="0" Duration="0:0:1" Storyboard.TargetProperty="OpacityMask.(GradientBrush.GradientStops)[1].Offset"/>
+            <DoubleAnimation From="1" To="0" Duration="0:0:1" BeginTime="0:0:0.5" Storyboard.TargetProperty="OpacityMask.(GradientBrush.GradientStops)[2].Offset"/>
+            <ColorAnimation To="#00000000" Duration="0" Storyboard.TargetProperty="OpacityMask.(GradientBrush.GradientStops)[2].Color"/>
+        </Storyboard>
+        <LinearGradientBrush x:Key="ClosedBrush" StartPoint="0.5,0" EndPoint="0.5,1">
+            <GradientStop Color="#FF000000" Offset="0"/>
+            <GradientStop Color="#FF000000" Offset="1"/>
+            <GradientStop Color="#FF000000" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Resources>
+    <Grid Name="RegisterGrid">
+        <Border CornerRadius="5" BorderThickness="2"  BorderBrush="White" Opacity="1">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0" Color="#FF414141" BlurRadius="8"/>
+            </Border.Effect>
+            <Border Opacity="1" Margin="0" CornerRadius="5">
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black" Offset="1"/>
+                        <GradientStop Color="{DynamicResource MyBlue}" Offset="0.272"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+        </Border>
+    <Grid>
+        <Grid.OpacityMask>
+            <LinearGradientBrush StartPoint="0.5,1" EndPoint="0.5,0">
+                <GradientStop Color="#00000000" Offset="0"/>
+                <GradientStop Color="#00000000" Offset="1"/>
+                <GradientStop Color="#00000000" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.OpacityMask>
+            <Grid.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation From="1" To="0" Duration="0:0:1.5" Storyboard.TargetProperty="OpacityMask.(GradientBrush.GradientStops)[1].Offset"/>
+                                <DoubleAnimation From="1" To="0" Duration="0:0:1" BeginTime="0:0:0.5" Storyboard.TargetProperty="OpacityMask.(GradientBrush.GradientStops)[2].Offset"/>
+                                <ColorAnimation To="#FF000000" Duration="0" Storyboard.TargetProperty="OpacityMask.(GradientBrush.GradientStops)[2].Color"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+            </Grid.Triggers>
+            <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*"></ColumnDefinition>
+            <ColumnDefinition Width="0.6*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Grid.Row="0" Foreground="AliceBlue" FontSize="20" TextAlignment="Center" HorizontalAlignment="Right" VerticalAlignment="Center">用户名：</TextBlock>
+        <TextBlock Grid.Column="0" Grid.Row="1" Foreground="AliceBlue" FontSize="20" TextAlignment="Center" HorizontalAlignment="Right" VerticalAlignment="Center">密码：</TextBlock>
+        <TextBlock Grid.Column="0" Grid.Row="2" Foreground="AliceBlue" FontSize="20" TextAlignment="Center" HorizontalAlignment="Right" VerticalAlignment="Center">密码确认：</TextBlock>
+        <TextBlock Grid.Column="0" Grid.Row="3" Foreground="AliceBlue" FontSize="20" TextAlignment="Center" HorizontalAlignment="Right" Margin="0,5">旅行格言：</TextBlock>
+        <TextBox Grid.Column="1" Grid.Row="0" FontSize="20" Width="140" HorizontalAlignment="Left" VerticalAlignment="Center" Name="id"  Style="{DynamicResource ValidationTextBoxStyle}">
+            <TextBox.Text>
+                <Binding Path="Id" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <validations:NotNullValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <PasswordBox Grid.Column="1" Grid.Row="1" FontSize="20" Width="140" HorizontalAlignment="Left" VerticalAlignment="Center" Name="password"></PasswordBox>
+        <PasswordBox Grid.Column="1" Grid.Row="2" FontSize="20" Width="140" HorizontalAlignment="Left" VerticalAlignment="Center" Name="password2"></PasswordBox>
+        <RichTextBox Grid.Column="1" Grid.Row="3" FontSize="12" Width="140" Height="80" HorizontalAlignment="Left" VerticalAlignment="Center" Name="word"></RichTextBox>
+        <TextBlock Grid.ColumnSpan="2" Grid.Row="4" TextAlignment="Center">
+            <Button FontSize="20" Width="60" Name="register" Template="{StaticResource MyButton}" Foreground="AliceBlue" Click="register_Click">注册</Button>
+            <TextBlock Margin="10"></TextBlock>
+            <Button FontSize="20" Width="60" Name="cancel" Click="cancel_Click" Template="{StaticResource MyButton}" Foreground="AliceBlue">取消</Button>
+        </TextBlock>
+    </Grid>
+    </Grid>
+</Window>
