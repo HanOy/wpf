@@ -32,6 +32,7 @@ namespace Wpf.Utility
         /// <returns></returns> 
         public static int ExecuteSql(String Sqlstr)
         {
+            int result = 0;
             String ConnStr = GetSqlConnection();
             using (SqlConnection conn = new SqlConnection(ConnStr))
             {
@@ -39,9 +40,9 @@ namespace Wpf.Utility
                 cmd.Connection = conn;
                 cmd.CommandText = Sqlstr;
                 conn.Open();
-                cmd.ExecuteNonQuery();
+                result = cmd.ExecuteNonQuery();
                 conn.Close();
-                return 1;
+                return result;
             }
         }
         /// <summary> 
@@ -55,14 +56,15 @@ namespace Wpf.Utility
             String ConnStr = GetSqlConnection();
             using (SqlConnection conn = new SqlConnection(ConnStr))
             {
+                int result = 0;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
                 cmd.CommandText = Sqlstr;
                 cmd.Parameters.AddRange(param);
                 conn.Open();
-                cmd.ExecuteNonQuery();
+                result = cmd.ExecuteNonQuery();
                 conn.Close();
-                return 1;
+                return result;
             }
         }
         /// <summary> 
@@ -86,6 +88,24 @@ namespace Wpf.Utility
             {
                 return null;
             }
+        }
+        /// <summary>
+        /// 返回查询的第一个结果
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        public static string MySqlQuery(string sql,string name)
+        {
+            string result = "";
+            SqlDataReader dr = ExecuteReader(sql);
+            if (dr != null)
+            {
+                if (dr.Read())
+                {
+                    result = dr[name].ToString().Trim();
+                }
+            }
+            return result;
         }
         /// <summary> 
         /// 执行SQL语句并返回数据表 

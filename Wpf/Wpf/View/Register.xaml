@@ -2,6 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:validations="clr-namespace:Wpf.Utility.MyValidationRule"
+        xmlns:local="clr-namespace:Wpf.View"
+        xmlns:helper="clr-namespace:Wpf.Utility"
         Title="注册" Height="300" Width="300" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" BorderThickness="2" Background="{x:Null}" AllowsTransparency="True">
     <Window.Resources>
         <Storyboard x:Key="ClosedStoryboard" Storyboard.TargetName="RegisterGrid">
@@ -74,9 +76,9 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <PasswordBox Grid.Column="1" Grid.Row="1" FontSize="20" Width="140" HorizontalAlignment="Left" VerticalAlignment="Center" Name="password"></PasswordBox>
-        <PasswordBox Grid.Column="1" Grid.Row="2" FontSize="20" Width="140" HorizontalAlignment="Left" VerticalAlignment="Center" Name="password2"></PasswordBox>
-        <RichTextBox Grid.Column="1" Grid.Row="3" FontSize="12" Width="140" Height="80" HorizontalAlignment="Left" VerticalAlignment="Center" Name="word"></RichTextBox>
+            <PasswordBox Grid.Column="1" Grid.Row="1" FontSize="20" Width="140" HorizontalAlignment="Left" VerticalAlignment="Center" Name="password" helper:PasswordBoxHelper.Attach="true" helper:PasswordBoxHelper.Password="{Binding Path=password,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/> 
+            <PasswordBox Grid.Column="1" Grid.Row="2" FontSize="20" Width="140" HorizontalAlignment="Left" VerticalAlignment="Center" Name="passwordConf" helper:PasswordBoxHelper.Attach="true" helper:PasswordBoxHelper.Password="{Binding Path=passwordConf,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <RichTextBox Grid.Column="1" Grid.Row="3" FontSize="12" Width="140" Height="80" HorizontalAlignment="Left" VerticalAlignment="Center" Name="word"/>
         <TextBlock Grid.ColumnSpan="2" Grid.Row="4" TextAlignment="Center">
             <Button FontSize="20" Width="60" Name="register" Template="{StaticResource MyButton}" Foreground="AliceBlue" Click="register_Click">注册</Button>
             <TextBlock Margin="10"></TextBlock>

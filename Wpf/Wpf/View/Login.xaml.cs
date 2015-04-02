@@ -40,7 +40,7 @@ namespace Wpf.View
         private void do_register(object sender, System.Windows.RoutedEventArgs e)
         {
             Register register = new Register();
-            register.ShowDialog();
+            register.Show();
             return;
         }
 

@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using Wpf.Utility;
 using System.Windows.Media.Animation;
 using Wpf.Model;
+using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace Wpf.View
 {
@@ -32,7 +34,41 @@ namespace Wpf.View
 
         private void register_Click(object sender, RoutedEventArgs e)
         {
-
+            string sql="select id from [user] where id = '"+id.Text+"' ";
+            if (SQLHelper.MySqlQuery(sql,"id") != "")
+            {
+                MessageBox.Show("用户名"+id.Text+"已被使用!");
+                return;
+            }
+            else if (!Regex.IsMatch(id.Text, "^[A-Za-z0-9\u4e00-\u9fa5]{2,10}$"))
+            {
+                MessageBox.Show("用户名: "+id.Text+" 不合法,长度2-10，数字或字母或汉字!");
+                return;
+            }
+            else if(password.Password!=passwordConf.Password)
+            {
+                MessageBox.Show("两次密码不一样!");
+                return;
+            }
+            else if (!Regex.IsMatch(password.Password , "^[0-9a-zA-Z]{6,16}"))
+            {
+                MessageBox.Show("密码长度6-16，数字或字母!");
+                return;
+            }
+            else
+            {
+                User user = new User();
+                user.Id = id.Text;
+                user.Password = password.Password;
+                user.Describe = GetText(word);
+                sql = "insert into [user] values('"+user.Id+"','"+user.Password+"','"+user.Describe+"','')";
+                if(SQLHelper.ExecuteSql(sql)==1)
+                {
+                    MessageBox.Show("注册成功!");
+                    cancel_Click(sender,e);
+                    return;
+                }
+            }
         }
 
         private void cancel_Click(object sender, RoutedEventArgs e)
@@ -42,6 +78,12 @@ namespace Wpf.View
             Storyboard std = this.Resources["ClosedStoryboard"] as Storyboard;
             std.Completed += delegate { this.Close(); };
             std.Begin();
+        }
+
+        private string GetText(RichTextBox richTextBox)
+        {
+            TextRange textRange = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
+            return textRange.Text;
         }
     }
 }
