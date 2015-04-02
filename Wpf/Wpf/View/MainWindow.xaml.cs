@@ -57,5 +57,24 @@ namespace Wpf
         {
             this.WindowState = WindowState.Minimized;
         }
+
+        private void SelectPicButton_Click(object sender, RoutedEventArgs e)
+        {
+            string filetype = "图片文件(*.jpg,*.png)|*.jpg;*.png";
+            string imgpath = OpenFileDialog(filetype);
+            if (!string.IsNullOrEmpty(imgpath))
+            {
+                this.PicTextBox.Text = imgpath;
+            }
+        }
+        public string OpenFileDialog(string _filetype)
+        {
+            Microsoft.Win32.OpenFileDialog op = new Microsoft.Win32.OpenFileDialog();
+            //op.InitialDirectory = _dir;你可以指定文件夹
+            op.RestoreDirectory = true;
+            op.Filter = _filetype;
+            op.ShowDialog();
+            return op.FileName;
+        }
     }
 }

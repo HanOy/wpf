@@ -61,7 +61,7 @@ namespace Wpf.View
                 user.Id = id.Text;
                 user.Password = password.Password;
                 user.Describe = GetText(word);
-                sql = "insert into [user] values('"+user.Id+"','"+user.Password+"','"+user.Describe+"','')";
+                sql = "insert into [user] values('" + user.Id + "','" + user.Password + "','" + user.Describe + "','/Resourse/head.jpg')";
                 if(SQLHelper.ExecuteSql(sql)==1)
                 {
                     MessageBox.Show("注册成功!");
