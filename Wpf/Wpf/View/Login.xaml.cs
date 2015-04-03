@@ -77,6 +77,7 @@ namespace Wpf.View
                             pwd = dr["password"].ToString().Trim();
                             if (pwd == password.Password)
                             {
+                                ((App)System.Windows.Application.Current).userSession = user.Text;
                                 MainWindow window = new MainWindow();
                                 this.Close();
                                 window.ShowDialog();

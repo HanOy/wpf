@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Wpf.Model;
+using Wpf.Utility;
 
 namespace Wpf
 {
@@ -23,6 +25,17 @@ namespace Wpf
         public MainWindow()
         {
             InitializeComponent();
+            User user = new User();
+            user.Id = ((App)System.Windows.Application.Current).userSession;
+            string sql = "select head from [user] where id = '" + user.Id + "'";
+            user.Head = SQLHelper.MySqlQuery(sql, "head");
+            string sql2 = "select describe from [user] where id = '" + user.Id + "'";
+            user.Describe = SQLHelper.MySqlQuery(sql2, "describe");
+            if (user.Describe == "")
+            {
+                user.Describe = "不能太懒，赶紧写一个自我介绍";
+            }
+            DataContext = user;
         }
 
         private void X_click(object sender, System.Windows.RoutedEventArgs e)
@@ -64,7 +77,9 @@ namespace Wpf
             string imgpath = OpenFileDialog(filetype);
             if (!string.IsNullOrEmpty(imgpath))
             {
-                this.PicTextBox.Text = imgpath;
+                string sql = "update [user] set head = '" + imgpath + "' where id='" + ((App)System.Windows.Application.Current).userSession + "'";
+                SQLHelper.ExecuteSql(sql);
+                MessageBox.Show("修改头像成功!");
             }
         }
         public string OpenFileDialog(string _filetype)

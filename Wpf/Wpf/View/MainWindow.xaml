@@ -22,10 +22,10 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Button Grid.RowSpan="2" Grid.Column="0"  Margin="58,26,113,24" Width="134" Template="{StaticResource MyHead}" Name="SelectPicButton" Click="SelectPicButton_Click">
-                    <Image Source="/Resourse/head.jpg" Width="86"></Image>
+                    <Image Source="{Binding Head}" Width="86"></Image>
                 </Button>
-                <TextBox Visibility="Hidden" Name="PicTextBox"></TextBox>
-                <TextBox Visibility="Hidden" Name="PicDirTextBox"></TextBox>
+                <TextBlock Name="user" Text="{Binding Id}" Grid.Row="0" Grid.Column="0" Foreground="#FFBFCEEA" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="21.333"></TextBlock>
+                <TextBlock Name="describe" Text="{Binding Describe}" Grid.Row="1" Grid.ColumnSpan="2" Foreground="#FFBFCEEA" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15"></TextBlock>
                 <ToolBar Grid.Row="0" Grid.ColumnSpan="4" Opacity="0" MouseMove="BackGround_MouseMove" MouseDoubleClick="BackGround_MouseDoubleClick"></ToolBar>
                 <Button Grid.Row="0" Grid.Column="3" Template="{StaticResource MyButton}" Margin="263,10,20,40" Width="22" Height="22" Foreground="Silver" BorderThickness="1" Click="X_click" RenderTransformOrigin="-1.06,0.475">X</Button>
                 <Button Grid.Row="0" Grid.Column="3" Template="{StaticResource MyButton}" Margin="233,11,50,41" Width="21" Height="21" Foreground="Silver" BorderThickness="1" Click="Min_click" RenderTransformOrigin="-1.06,0.475">一</Button>
