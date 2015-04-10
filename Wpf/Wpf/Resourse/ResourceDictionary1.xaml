@@ -4,20 +4,27 @@
     xmlns:validations="clr-namespace:Wpf.Utility.MyValidationRule">
     <Color x:Key="MyBlue">#FF3D50A6</Color>
 	<!-- 应该在此定义资源字典条目。-->
-
+    <!--button-->
     <ControlTemplate  x:Key="MyButton" TargetType="{x:Type Button}">
-            <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="0" CornerRadius="20,20,20,20" Name="PART_Background">
-                <Border.Background>
-                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+        <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="0" CornerRadius="20,20,20,20" Name="PART_Background">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FF3B99E1" Offset="0.0" />
                     <GradientStop Color="#FF3B99E1" Offset="0.5" />
                     <GradientStop Color="#FF3B99E1" Offset="0.0" />
-                    </LinearGradientBrush>
-                </Border.Background>
-                <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            </Border>
-     </ControlTemplate>
-
+                </LinearGradientBrush>
+            </Border.Background>
+            <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Border>
+    </ControlTemplate>
+    <Style x:Key="MyButtonStyle">
+        <Style.Triggers>
+            <Trigger Property="Control.IsMouseOver" Value="true">
+                <Setter Property="Path.Cursor" Value="Hand"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!--head的形状-->
     <ControlTemplate  x:Key="MyHead">
         <Border BorderBrush="{TemplateBinding Control.BorderBrush}" BorderThickness="0" CornerRadius="50,50,50,50" Name="PART_Background">
             <Border.Background>
@@ -30,9 +37,9 @@
             <ContentPresenter Content="{TemplateBinding ContentControl.Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
         </Border>
     </ControlTemplate>
-    
+    <!--user xml-->
     <XmlDataProvider x:Key="xmlUser" Source="D:/user.xml" XPath="user/userinfo"></XmlDataProvider>
-
+    <!--textbox的校验-->
     <Style x:Key="ValidationTextBoxStyle" TargetType="{x:Type TextBox}">
         <Setter Property="Validation.ErrorTemplate">
             <Setter.Value>
@@ -59,7 +66,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-
+    <!--密码输入框的校验风格-->
     <Style x:Key="ValidationPasswordBoxStyle" TargetType="{x:Type PasswordBox}">
         <Setter Property="Validation.ErrorTemplate">
             <Setter.Value>
@@ -86,7 +93,21 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-
+    <!--各个省份的风格  RenderTransform="0.66,0,0,0.66,72,72" 控制大小-->
+    <Style x:Key="province">
+        <Setter Property="Path.Fill" Value="#26000000"></Setter>
+        <Style.Triggers>
+            <Trigger Property="Control.IsMouseOver" Value="true">
+                <Setter Property="Path.Cursor" Value="Hand"></Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!--省份文字的风格-->
+    <Style x:Key="provinceName">
+        <Setter Property="Glyphs.FontRenderingEmSize" Value="12"></Setter>
+        <Setter Property="Glyphs.Fill" Value="#59000000"></Setter>
+    </Style>
+    
     <validations:NotNullValidationRule x:Key="NotNullValidationRule" />
     <validations:PasswordValidationRule x:Key="PasswordValidationRule" />
 </ResourceDictionary>

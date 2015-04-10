@@ -20,7 +20,7 @@ namespace Wpf.Utility
         /// <returns></returns> 
         public static String GetSqlConnection()
         {
-            String conn = "Data Source=(localdb)\\Projects;Initial Catalog=Database1;Integrated Security=True";
+            String conn = "Data Source=(localdb)\\Projects;Initial Catalog=wpf;Integrated Security=True";
             return conn;
         }
         #endregion

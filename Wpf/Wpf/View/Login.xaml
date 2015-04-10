@@ -67,9 +67,9 @@
         <PasswordBox Grid.Column="1" Grid.Row="1" FontSize="20" Height="30" Margin="10,66,21,5" Name="password" Grid.RowSpan="2"/>
         <TextBlock Grid.ColumnSpan="2" Foreground="Honeydew" TextAlignment="Center" Margin="48,10" FontSize="30">旅游足迹管理</TextBlock>
         <TextBlock Grid.ColumnSpan="2" Grid.Row="4" TextAlignment="Center">
-            <Button FontSize="20" Width="60" Name="login" Template="{StaticResource MyButton}" Foreground="AliceBlue" Click="login_Click">登陆</Button>
+            <Button FontSize="20" Width="60" Name="login" Template="{StaticResource MyButton}" Style="{StaticResource MyButtonStyle}" Foreground="AliceBlue" Click="login_Click">登陆</Button>
             <TextBlock Margin="10"></TextBlock>
-            <Button FontSize="20" Width="60" Name="cancel" Click="cancel_click" Template="{StaticResource MyButton}" Foreground="AliceBlue">取消</Button>
+            <Button FontSize="20" Width="60" Name="cancel" Click="cancel_click" Template="{StaticResource MyButton}" Style="{StaticResource MyButtonStyle}" Foreground="AliceBlue">取消</Button>
         </TextBlock>
         <CheckBox Grid.ColumnSpan="2" Grid.Row="3" Foreground="AliceBlue" Margin="150,5,40,5" Name="remenber" IsChecked="True">记住用户名</CheckBox>
         <TextBlock Grid.ColumnSpan="2" Grid.Row="3" Foreground="AliceBlue" Margin="250,5,15,15"><Hyperlink Name="register" Click="do_register">注册</Hyperlink></TextBlock>

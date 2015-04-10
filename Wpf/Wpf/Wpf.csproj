@@ -56,6 +56,10 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data, Version=6.7.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -80,6 +84,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\City.cs" />
+    <Compile Include="Model\Province.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Utility\BaseCommandBindingProxy.cs" />
     <Compile Include="Utility\CloseCommandBindingProxy.cs" />
@@ -90,6 +96,9 @@
     <Compile Include="Utility\TipsEventArgs.cs" />
     <Compile Include="Utility\TipsEventHandler.cs" />
     <Compile Include="Utility\MyValidationRule.cs" />
+    <Compile Include="View\Choose.xaml.cs">
+      <DependentUpon>Choose.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -99,6 +108,10 @@
     <Page Include="Resourse\ResourceDictionary1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Choose.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -143,7 +156,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\Wpf.Model.User.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -172,6 +184,46 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourse\province\1.jpg" />
+    <Resource Include="Resourse\province\10.jpg" />
+    <Resource Include="Resourse\province\11.jpg" />
+    <Resource Include="Resourse\province\12.jpg" />
+    <Resource Include="Resourse\province\13.jpg" />
+    <Resource Include="Resourse\province\14.jpg" />
+    <Resource Include="Resourse\province\15.jpg" />
+    <Resource Include="Resourse\province\16.jpg" />
+    <Resource Include="Resourse\province\17.jpg" />
+    <Resource Include="Resourse\province\18.jpg" />
+    <Resource Include="Resourse\province\19.jpg" />
+    <Resource Include="Resourse\province\2.jpg" />
+    <Resource Include="Resourse\province\20.jpg" />
+    <Resource Include="Resourse\province\21.jpg" />
+    <Resource Include="Resourse\province\22.jpg" />
+    <Resource Include="Resourse\province\23.jpg" />
+    <Resource Include="Resourse\province\24.jpg" />
+    <Resource Include="Resourse\province\25.jpg" />
+    <Resource Include="Resourse\province\26.jpg" />
+    <Resource Include="Resourse\province\27.jpg" />
+    <Resource Include="Resourse\province\28.jpg" />
+    <Resource Include="Resourse\province\29.jpg" />
+    <Resource Include="Resourse\province\3.jpg" />
+    <Resource Include="Resourse\province\30.jpg" />
+    <Resource Include="Resourse\province\31.jpg" />
+    <Resource Include="Resourse\province\32.jpg" />
+    <Resource Include="Resourse\province\33.jpg" />
+    <Resource Include="Resourse\province\34.jpg" />
+    <Resource Include="Resourse\province\4.jpg" />
+    <Resource Include="Resourse\province\5.jpg" />
+    <Resource Include="Resourse\province\6.jpg" />
+    <Resource Include="Resourse\province\7.jpg" />
+    <Resource Include="Resourse\province\8.jpg" />
+    <Resource Include="Resourse\province\9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resourse\city\" />
+    <Folder Include="Resourse\viewpoint\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

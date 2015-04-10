@@ -47,3 +47,6 @@ D:\git\wpf\Wpf\Wpf\obj\Debug\Wpf.csproj.GenerateResource.Cache
 D:\git\wpf\Wpf\Wpf\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\git\wpf\Wpf\Wpf\obj\Debug\View\Register.baml
 D:\git\wpf\Wpf\Wpf\obj\Debug\View\Register.g.cs
+D:\git\wpf\Wpf\Wpf\obj\Debug\View\Choose.baml
+D:\git\wpf\Wpf\Wpf\obj\Debug\View\Choose.g.cs
+D:\git\wpf\Wpf\Wpf\bin\Debug\MySql.Data.dll

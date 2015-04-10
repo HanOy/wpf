@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Wpf.Model;
 using Wpf.Utility;
+using Wpf.View;
+using System.Data;
 
 namespace Wpf
 {
@@ -91,5 +93,27 @@ namespace Wpf
             op.ShowDialog();
             return op.FileName;
         }
+
+        private void province_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            var buttonName = button.Name;
+            Choose choose = new Choose();
+            string sql = "";
+            DataTable dt;
+            if (buttonName == "addFoot")
+            {
+                sql = "select * from [province]";
+                dt = SQLHelper.ExecuteDt(sql);
+            }
+            else
+            {
+                sql = "select * from [city] where provinceId = (select id from [province] where province =  '" + buttonName + "'）";
+                dt = SQLHelper.ExecuteDt(sql);
+            }
+            choose.DataContext = dt;
+            choose.Show();
+        }
+
     }
 }
