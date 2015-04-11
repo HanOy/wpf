@@ -108,10 +108,11 @@ namespace Wpf
             }
             else
             {
-                sql = "select * from [city] where provinceId = (select id from [province] where province =  '" + buttonName + "'）";
+                sql = "select * from [city] where provinceId = (select id from [province] where province = '"+buttonName+"')";
                 dt = SQLHelper.ExecuteDt(sql);
             }
             choose.DataContext = dt;
+            choose.lv.Items.Clear();
             choose.Show();
         }
 
