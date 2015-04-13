@@ -30,7 +30,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Shell;
 using Wpf.Model;
-using Wpf.Utility.MyValidationRule;
 
 
 namespace Wpf.View {

@@ -9,7 +9,7 @@ using Wpf.Utility;
 
 namespace Wpf.Model
 {
-    class User : NotificationObject
+    class User
     {
         private string _id;
         private string _password;
