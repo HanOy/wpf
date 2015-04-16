@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Projects\wpf\Wpf\Wpf\obj\Debug\
+D:\git\wpf\Wpf\Wpf\obj\Debug\
 Wpf
 none
 false
 DEBUG;TRACE
-D:\Projects\wpf\Wpf\Wpf\App.xaml
+D:\git\wpf\Wpf\Wpf\App.xaml
 5-276996544
 
 18604736080
-191759348044
+19164016402
 Resourse\ResourceDictionary1.xaml;View\Choose.xaml;View\MainWindow.xaml;View\Login.xaml;View\Register.xaml;
 
-True
+False
 

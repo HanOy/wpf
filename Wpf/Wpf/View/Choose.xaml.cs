@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Wpf.Utility;
 using System.Windows.Media.Animation;
+using System.Data;
 
 namespace Wpf.View
 {
@@ -34,6 +35,15 @@ namespace Wpf.View
             Storyboard std = this.Resources["ClosedStoryboard"] as Storyboard;
             std.Completed += delegate { this.Close(); };
             std.Begin();
+        }
+
+        private void city_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            string ID = button.Content.ToString();
+            string sql = "select * from [city] where provinceId = '"+ID+"'";
+            DataTable dt = SQLHelper.ExecuteDt(sql);
+            DataContext = dt;
         }
     }
 }

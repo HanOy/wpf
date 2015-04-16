@@ -42,7 +42,7 @@ namespace Wpf
 
         private void X_click(object sender, System.Windows.RoutedEventArgs e)
         {
-        	Application.Current.Shutdown();
+            Application.Current.Shutdown();
             base.OnClosed(e);
         }
 
@@ -61,11 +61,11 @@ namespace Wpf
                 this.WindowState = WindowState.Normal;
                 return;
             }
-            if(this.WindowState == WindowState.Normal)
+            if (this.WindowState == WindowState.Normal)
             {
                 this.WindowState = WindowState.Maximized;
             }
-            
+
         }
 
         private void Min_click(object sender, RoutedEventArgs e)
@@ -108,7 +108,7 @@ namespace Wpf
             }
             else
             {
-                sql = "select * from [city] where provinceId = (select id from [province] where province = '"+buttonName+"')";
+                sql = "select * from [city] where provinceId = (select provinceId from [province] where province = '" + buttonName + "')";
                 dt = SQLHelper.ExecuteDt(sql);
             }
             choose.DataContext = dt;

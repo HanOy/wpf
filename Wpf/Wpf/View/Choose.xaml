@@ -52,25 +52,48 @@
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Foreground="Black" FontSize="20" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,10,0,23">踩足迹</TextBlock>
             <Button Style="{StaticResource MyButtonStyle}" Grid.Row="0" Template="{StaticResource MyButton}" Width="22" Height="22" Foreground="AliceBlue" BorderThickness="1" Click="X_click" RenderTransformOrigin="8.545,0.5" Margin="655,15,19,22">X</Button>
-                <ListView ItemsSource="{Binding}" Name="lv" Grid.Row="1">
+            <ListView ItemsSource="{Binding}" Name="lv" Grid.Row="1">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Width="670"></WrapPanel>
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid HorizontalAlignment="Center" Width="150" Height="150" Margin="5,5,5,5" VerticalAlignment="Center">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalAlignment="Center" Width="140" Height="150" Margin="5,5,5,5" VerticalAlignment="Center">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="8*"></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
+                            <Border BorderThickness="0" CornerRadius="10,10,10,10">
+                                <Button Name="ID" Click="city_Click" Content="{Binding Path=provinceId}" Foreground="{x:Null}">
+                                    <Button.Style>
+                                        <Style TargetType="Button" >
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Grid>
+                                                            <Image Name="ImgBtnBg" Source="{Binding Path=picture}" Stretch="Fill"/>
+                                                        </Grid>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="Source" Value="{Binding Path=picture}" TargetName="ImgBtnBg"/>
+                                                                <Setter Property="Path.Cursor" Value="Hand"></Setter>
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </Border>
                             <TextBlock Text="{Binding Path=province}" Grid.Row="1" FontSize="14" Foreground="Black" Width="42"></TextBlock>
-                            <Image Source="{Binding Path=picture}" Grid.Row="0" Width="120" Height="120"></Image>
-                            </Grid>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                            <TextBlock Text="{Binding Path=city}" Grid.Row="1" FontSize="14" Foreground="Black" Width="56"></TextBlock>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
             <Button Style="{StaticResource MyButtonStyle}" Grid.Row="2" Content="添加" HorizontalAlignment="Left" VerticalAlignment="Top" Template="{StaticResource MyButton}" Width="90" Height="30" FontSize="20" Background="#FF3B99E1" BorderThickness="0" Foreground="#FFF0F5FC" Margin="577,1,0,0"></Button>
         </Grid>
     </Grid>
