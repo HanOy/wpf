@@ -37,11 +37,28 @@ namespace Wpf.View
             std.Begin();
         }
 
-        private void city_Click(object sender, RoutedEventArgs e)
+        private void picture_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
             string ID = button.Content.ToString();
-            string sql = "select * from [city] where provinceId = '"+ID+"'";
+            if (provName.Text == "" || provName.Text == null)
+            {
+                string sql = "select cityId as Id,city,provinceId,picture,point,province as provinceName from (select * from [city] where provinceId = '" + ID + "') t1, (select province from province where provinceId='" + ID + "') t2";
+                DataTable dt = SQLHelper.ExecuteDt(sql);
+                DataContext = dt;
+            }
+            else
+            {
+                string sql = "insert into footprint values ('" + ID + "','" + provId.Text + "','','" + ((App)System.Windows.Application.Current).userSession + "')";
+                if (SQLHelper.ExecuteSql(sql) == 0)
+                    MessageBox.Show("增加失败");
+                MessageBox.Show("增加成功");
+            }
+        }
+
+        private void return_Click(object sender, RoutedEventArgs e)
+        {
+            string sql = "select provinceId as Id,province,picture from [province]";
             DataTable dt = SQLHelper.ExecuteDt(sql);
             DataContext = dt;
         }

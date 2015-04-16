@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Wpf.View"
         xmlns:helper="clr-namespace:Wpf.Utility"
-        Title="添加足迹" Height="400" Width="700" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" BorderThickness="2" Background="{x:Null}" AllowsTransparency="True">
+        Title="添加足迹" Height="500" Width="840" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" BorderThickness="2" Background="{x:Null}" AllowsTransparency="True">
     <Window.Resources>
         <Storyboard x:Key="ClosedStoryboard" Storyboard.TargetName="ChooseGrid">
             <DoubleAnimation From="1" To="0" Duration="0:0:1" Storyboard.TargetProperty="OpacityMask.(GradientBrush.GradientStops)[1].Offset"/>
@@ -51,11 +51,13 @@
                 <RowDefinition Height="0.15*"></RowDefinition>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Foreground="Black" FontSize="20" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,10,0,23">踩足迹</TextBlock>
-            <Button Style="{StaticResource MyButtonStyle}" Grid.Row="0" Template="{StaticResource MyButton}" Width="22" Height="22" Foreground="AliceBlue" BorderThickness="1" Click="X_click" RenderTransformOrigin="8.545,0.5" Margin="655,15,19,22">X</Button>
+            <TextBlock Name="provName" Grid.Row="0" Foreground="Black" FontSize="15" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,50,0,0" Text="{Binding Path=provinceName}"></TextBlock>
+            <TextBlock Name="provId" Visibility="Hidden" Text="{Binding Path=provinceId}"></TextBlock>
+            <Button Style="{StaticResource MyButtonStyle}" Grid.Row="0" Template="{StaticResource MyButton}" Width="22" Height="22" Foreground="AliceBlue" BorderThickness="1" Click="X_click" RenderTransformOrigin="8.545,0.5" Margin="780,0,0,30">X</Button>
             <ListView ItemsSource="{Binding}" Name="lv" Grid.Row="1">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel Width="670"></WrapPanel>
+                        <WrapPanel Width="810"></WrapPanel>
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
@@ -66,7 +68,7 @@
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
                             <Border BorderThickness="0" CornerRadius="10,10,10,10">
-                                <Button Name="ID" Click="city_Click" Content="{Binding Path=provinceId}" Foreground="{x:Null}">
+                                <Button Name="ID" Click="picture_Click" Content="{Binding Path=Id}" Foreground="{x:Null}">
                                     <Button.Style>
                                         <Style TargetType="Button" >
                                             <Setter Property="Template">
@@ -94,7 +96,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Style="{StaticResource MyButtonStyle}" Grid.Row="2" Content="添加" HorizontalAlignment="Left" VerticalAlignment="Top" Template="{StaticResource MyButton}" Width="90" Height="30" FontSize="20" Background="#FF3B99E1" BorderThickness="0" Foreground="#FFF0F5FC" Margin="577,1,0,0"></Button>
+            <Button Name="return" Click="return_Click" Style="{StaticResource MyButtonStyle}" Grid.Row="2" Content="返回" HorizontalAlignment="Left" VerticalAlignment="Top" Template="{StaticResource MyButton}" Width="90" Height="30" FontSize="20" Background="#FF3B99E1" BorderThickness="0" Foreground="#FFF0F5FC" Margin="720,10,0,0"></Button>
         </Grid>
     </Grid>
 </Window>

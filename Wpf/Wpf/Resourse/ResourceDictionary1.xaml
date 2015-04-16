@@ -107,6 +107,11 @@
         <Setter Property="Glyphs.FontRenderingEmSize" Value="12"></Setter>
         <Setter Property="Glyphs.Fill" Value="#59000000"></Setter>
     </Style>
+    <!--省份button的风格-->
+    <Style x:Key="provinceButton">
+        <Setter Property="Button.Content" Value="{Binding province}"></Setter>
+        <Setter Property="Button.Foreground" Value="{x:Null}"></Setter>
+    </Style>
     
     <validations:NotNullValidationRule x:Key="NotNullValidationRule" />
     <validations:PasswordValidationRule x:Key="PasswordValidationRule" />

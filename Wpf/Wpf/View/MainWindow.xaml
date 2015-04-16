@@ -22,10 +22,10 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Button Grid.RowSpan="2" Grid.Column="0"  Margin="58,26,113,24" Width="134" Template="{StaticResource MyHead}" Style="{StaticResource MyButtonStyle}" Name="SelectPicButton" Click="SelectPicButton_Click">
-                    <Image Source="{Binding Head}" Width="86"></Image>
+                    <Image Source="{Binding head}" Width="86"></Image>
                 </Button>
-                <TextBlock Name="user" Text="{Binding Id}" Grid.Row="0" Grid.Column="0" Foreground="#FFBFCEEA" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="21.333"></TextBlock>
-                <TextBlock Name="describe" Text="{Binding Describe}" Grid.Row="1" Grid.ColumnSpan="2" Foreground="#FFBFCEEA" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15"></TextBlock>
+                <TextBlock Name="user" Text="{Binding id}" Grid.Row="0" Grid.Column="1" Foreground="#FFBFCEEA" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="21.333"></TextBlock>
+                <TextBlock Name="describe" Text="{Binding describe}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Foreground="#FFBFCEEA" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15"></TextBlock>
                 <ToolBar Grid.Row="0" Grid.ColumnSpan="4" Opacity="0" MouseMove="BackGround_MouseMove" MouseDoubleClick="BackGround_MouseDoubleClick"></ToolBar>
                 <Button Style="{StaticResource MyButtonStyle}" Grid.Row="0" Grid.Column="3" Template="{StaticResource MyButton}" Margin="263,10,20,40" Width="22" Height="22" Foreground="Silver" BorderThickness="1" Click="X_click" RenderTransformOrigin="-1.06,0.475">X</Button>
                 <Button Style="{StaticResource MyButtonStyle}" Grid.Row="0" Grid.Column="3" Template="{StaticResource MyButton}" Margin="233,11,50,41" Width="21" Height="21" Foreground="Silver" BorderThickness="1" Click="Min_click" RenderTransformOrigin="-1.06,0.475">一</Button>
@@ -449,13 +449,13 @@
                                             <Button.Template>
                                                 <ControlTemplate>
                                                     <Border>
-                                                        <Path Name="taiwan" Data="M 664,531 L 650.4,566.2 642.4,576.6 640.8,583.8 639.2,583.8 636,580.6 636,576.6 629.6,567 627.2,544.6 641.6,519 645.6,518.2 652,511.8 656.8,511.8 659.2,515 665.6,516.6 665.6,519.8 663.2,523 663.2,530.2" Style="{StaticResource province}"  />
+                                                        <Path Name="taiwan" Data="M 664,531 L 650.4,566.2 642.4,576.6 640.8,583.8 639.2,583.8 636,580.6 636,576.6 629.6,567 627.2,544.6 641.6,519 645.6,518.2 652,511.8 656.8,511.8 659.2,515 665.6,516.6 665.6,519.8 663.2,523 663.2,530.2" Style="{StaticResource province}" />
                                                     </Border>
                                                 </ControlTemplate>
                                             </Button.Template>
                                         </Button>
                                     </Grid>
-                					<TextBlock HorizontalAlignment="Left" Margin="112.666,63.907,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="21.333" Background="#001D335B" Height="197.093" Width="200.333" Foreground="#FFBFCEEA"><Run Language="zh-cn" Text="    我的足迹"/><LineBreak/><Run Language="zh-cn"/><LineBreak/><Run FontSize="24" Language="zh-cn" Text="9"/><Run FontSize="14.667" Language="zh-cn" Text="省份    "/><Run FontSize="24" Language="zh-cn" Text="18"/><Run FontSize="14.667" Language="zh-cn" Text="城市    "/><Run FontSize="24" Language="zh-cn" Text="20"/><Run FontSize="14.667" Language="zh-cn" Text="景点"/></TextBlock>
+                					<TextBlock HorizontalAlignment="Left" Margin="112.666,63.907,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="21.333" Background="#001D335B" Height="197.093" Width="200.333" Foreground="#FFBFCEEA"><Run Language="zh-cn" Text="    我的足迹"/><LineBreak/><Run Language="zh-cn"/><LineBreak/><Run FontSize="24" Language="zh-cn" Text="{Binding countProvince}"/><Run FontSize="14.667" Language="zh-cn" Text="省份    "/><Run FontSize="24" Language="zh-cn" Text="{Binding countCity}"/><Run FontSize="14.667" Language="zh-cn" Text="城市    "/><Run FontSize="24" Language="zh-cn" Text="{Binding countViewspot}"/><Run FontSize="14.667" Language="zh-cn" Text="景点"/></TextBlock>
                 					<Button Name="addFoot" Style="{StaticResource MyButtonStyle}" Content="添加足迹" HorizontalAlignment="Left" Margin="249,60.564,0,0" VerticalAlignment="Top" Template="{StaticResource MyButton}" Width="112" Height="33.78" FontSize="21.333" Background="#FF3B99E1" BorderThickness="0" Foreground="#FFF0F5FC" Click="province_Click"/>
                 				</Grid>
                 				<StackPanel Background="#FFFFFBFB">

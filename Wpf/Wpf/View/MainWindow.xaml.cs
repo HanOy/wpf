@@ -27,17 +27,9 @@ namespace Wpf
         public MainWindow()
         {
             InitializeComponent();
-            User user = new User();
-            user.Id = ((App)System.Windows.Application.Current).userSession;
-            string sql = "select head from [user] where id = '" + user.Id + "'";
-            user.Head = SQLHelper.MySqlQuery(sql, "head");
-            string sql2 = "select describe from [user] where id = '" + user.Id + "'";
-            user.Describe = SQLHelper.MySqlQuery(sql2, "describe");
-            if (user.Describe == "")
-            {
-                user.Describe = "不能太懒，赶紧写一个自我介绍";
-            }
-            DataContext = user;
+            string sql = "select * from (select id,head,describe from [user] where id = '" + ((App)System.Windows.Application.Current).userSession + "') t1,(select count(distinct provinceId) as countProvince from footprint) t2,(select count(distinct provinceId) as countCity from (select distinct cityId,provinceId from footprint) as t4) t3,(select count(distinct viewspotId) as countViewspot from footprint) t4";
+            DataTable dt = SQLHelper.ExecuteDt(sql);
+            DataContext = dt;
         }
 
         private void X_click(object sender, System.Windows.RoutedEventArgs e)
@@ -103,12 +95,12 @@ namespace Wpf
             DataTable dt;
             if (buttonName == "addFoot")
             {
-                sql = "select * from [province]";
+                sql = "select provinceId as Id,province,picture from [province]";
                 dt = SQLHelper.ExecuteDt(sql);
             }
             else
             {
-                sql = "select * from [city] where provinceId = (select provinceId from [province] where province = '" + buttonName + "')";
+                sql = "select cityId as Id,city,provinceId,picture,point,province as provinceName from (select * from [city] where provinceId = (select provinceId from [province] where province = '" + buttonName + "')) t1,(select province from province where provinceId=(select provinceId from [province] where province = '" + buttonName + "')) t2";
                 dt = SQLHelper.ExecuteDt(sql);
             }
             choose.DataContext = dt;
